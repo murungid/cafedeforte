@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cafe De Forte — Fort Portal's premium café, bakery & dining experience. Best café in Fort Portal Uganda. Fine dining, artisan coffee, bakery & lounge.">
+<meta name="keywords" content="best café in Fort Portal, restaurants in Fort Portal Uganda, Cafe De Forte, Fort Portal dining, Uganda café">
+<title>Cafe De Forte — Where Flavor Meets Elegance | Fort Portal, Uganda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0B0B0B;
+    --charcoal: #111111;
+    --gold: #D4AF37;
+    --gold-light: #E8CB6A;
+    --gold-dim: #9C7E20;
+    --red: #B11226;
+    --white: #F5F0E8;
+    --gray: #888880;
+    --gray-light: #C8C4BC;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', 'Helvetica Neue', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: #000000;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 0.5px solid rgba(212,175,55,0.15);
+    transition: padding 0.3s;
+  }
+  nav.scrolled { padding: 0.8rem 4rem; }
+
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); font-weight: 300; }
+  .nav-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s;
+  }
+  nav.scrolled .nav-logo img {
+    height: 38px;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--black) !important;
+    background: var(--gold);
+    padding: 0.55rem 1.4rem;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  .nav-cta::after { display: none !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 1px; background: var(--white); transition: all 0.3s; }
+
+  /* HERO */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.3) 40%, rgba(11,11,11,0.75) 100%),
+      url('compound.webp') center center / cover no-repeat;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(212,175,55,0.018) 60px,
+      rgba(212,175,55,0.018) 61px
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 2rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.55s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--gray-light);
+    letter-spacing: 0.04em;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.8s forwards;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 2rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.75s forwards;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s 1.05s forwards;
+  }
+
+  .btn-primary {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem 2.4rem;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    box-shadow: 0 0 28px rgba(212,175,55,0.35);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem 2.4rem;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.4);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1s 1.6s forwards;
+  }
+  .hero-scroll span {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* SECTION DEFAULTS */
+  section {
+    padding: 6rem 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .gold-rule {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  /* ABOUT */
+  #about {
+    background: #0e0e0e;
+    position: relative;
+    overflow: hidden;
+  }
+  #about::before {
+    content: 'CDF';
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 20rem;
+    font-weight: 700;
+    color: rgba(212,175,55,0.03);
+    letter-spacing: -0.05em;
+    user-select: none;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+  .about-img-border {
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    right: 16px;
+    bottom: 16px;
+    border: 1px solid rgba(212,175,55,0.3);
+    pointer-events: none;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    background: var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .about-badge .year {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1;
+  }
+  .about-badge .since {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.6);
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--gray-light);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  .about-text p strong {
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .pillar {
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 1rem;
+  }
+  .pillar-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .pillar-desc {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  /* MENU */
+  #menu {
+    background: var(--black);
+  }
+  .menu-header { text-align: center; margin-bottom: 4rem; }
+  .menu-header .gold-rule { margin: 0 auto 2rem; }
+
+  .menu-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    border: none;
+  }
+  .menu-tab {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.8rem 2.2rem;
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 40px;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  .menu-tab.active, .menu-tab:hover { 
+    background: var(--gold); 
+    color: var(--black); 
+    border-color: var(--gold); 
+    box-shadow: 0 4px 15px rgba(212,175,55,0.25);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 5rem;
+  }
+  @media (max-width: 900px) {
+    .menu-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  .menu-item {
+    position: relative;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.3s ease;
+    background: transparent;
+    cursor: auto;
+  }
+  .menu-item:hover {
+    transform: translateX(6px);
+    border-bottom-color: rgba(212,175,55,0.3);
+    background: transparent;
+  }
+  .menu-item::before { display: none; }
+
+  .menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+  }
+  
+  .menu-item-icon {
+    font-size: 1.2rem;
+    margin-right: 0.6rem;
+    vertical-align: middle;
+  }
+
+  .menu-item-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .menu-item-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted rgba(212,175,55,0.3);
+    margin: 0 1rem;
+    opacity: 0.7;
+    position: relative;
+    top: -6px;
+  }
+
+  .menu-item-price {
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .menu-item-desc {
+    font-size: 0.85rem;
+    color: var(--gray-light);
+    line-height: 1.6;
+    padding-right: 15%;
+  }
+
+  .menu-badge {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.8rem;
+    font-family: var(--sans);
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: var(--red);
+    color: var(--white);
+    border-radius: 4px;
+    position: relative;
+    top: -2px;
+  }
+
+  .menu-download {
+    text-align: center;
+    margin-top: 3.5rem;
+  }
+
+  /* GALLERY / EXPERIENCE */
+  #gallery {
+    background: #0a0a0a;
+    padding-bottom: 0;
+  }
+  .gallery-header { text-align: center; margin-bottom: 3.5rem; }
+  .gallery-header .gold-rule { margin: 0 auto 2rem; }
+
+  .gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 320px);
+    gap: 4px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(0.88) saturate(0.9);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.07);
+    filter: brightness(0.95) saturate(1.05);
+  }
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11,11,11,0.8) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-caption {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+
+  .g1 { grid-column: 1; grid-row: 1 / 3; }
+  .g2 { grid-column: 2; grid-row: 1; }
+  .g3 { grid-column: 3 / 5; grid-row: 1; }
+  .g4 { grid-column: 2; grid-row: 2; }
+  .g5 { grid-column: 3; grid-row: 2; }
+  .g6 { grid-column: 4; grid-row: 2; }
+
+  /* EXPERIENCE / AMBIANCE */
+  #experience {
+    background: #0d0d0d;
+  }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .exp-text .section-title { max-width: 480px; }
+
+  .exp-features {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  .exp-feature {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+  .exp-feature-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border: 1px solid rgba(212,175,55,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+  .exp-feature-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .exp-feature-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .exp-img-stack {
+    position: relative;
+    height: 580px;
+  }
+  .exp-img-main {
+    position: absolute;
+    top: 0; left: 0;
+    width: 75%;
+    height: 420px;
+    object-fit: cover;
+    border: 1px solid rgba(212,175,55,0.15);
+  }
+  .exp-img-secondary {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 65%;
+    height: 300px;
+    object-fit: cover;
+    border: 1px solid rgba(212,175,55,0.15);
+  }
+  .exp-img-accent {
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 110px;
+    height: 110px;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .exp-img-accent-inner {
+    text-align: center;
+    color: var(--black);
+  }
+  .exp-img-accent-inner .num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .exp-img-accent-inner .lbl {
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* GOOGLE REVIEWS BADGE */
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 0.6rem 1.6rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .google-badge:hover {
+    transform: translateY(-2px);
+  }
+  .google-badge-g {
+    font-family: 'Product Sans', var(--sans);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-right: 0.8rem;
+    letter-spacing: -0.5px;
+  }
+  .google-badge-g span:nth-child(1) { color: #4285f4; }
+  .google-badge-g span:nth-child(2) { color: #ea4335; }
+  .google-badge-g span:nth-child(3) { color: #fbbc04; }
+  .google-badge-g span:nth-child(4) { color: #4285f4; }
+  .google-badge-g span:nth-child(5) { color: #34a853; }
+  .google-badge-g span:nth-child(6) { color: #ea4335; }
+  .google-badge-rating {
+    font-family: var(--sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    margin-right: 0.4rem;
+  }
+  .google-badge-stars {
+    display: flex;
+    gap: 3px;
+    margin-right: 0.8rem;
+    color: #fbbc04;
+    font-size: 1.2rem;
+  }
+  .google-badge-text {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #5f6368;
+    position: relative;
+    top: 2px;
+  }
+
+  /* REVIEWS */
+  #reviews {
+    background: var(--black);
+  }
+  .reviews-header { text-align: center; margin-bottom: 4rem; }
+  .reviews-header .gold-rule { margin: 0 auto 2rem; }
+
+  .reviews-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    background: #111;
+    padding: 2.2rem;
+    border: 1px solid rgba(212,175,55,0.1);
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .review-card:hover {
+    border-color: rgba(212,175,55,0.35);
+    transform: translateY(-4px);
+  }
+  .review-card::before {
+    content: '"';
+    font-family: var(--serif);
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(212,175,55,0.08);
+    position: absolute;
+    top: -1rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1.2rem;
+  }
+  .star { color: var(--gold); font-size: 0.9rem; }
+
+  .review-text {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gray-light);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .review-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .review-name {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--white);
+  }
+  .review-location {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+
+  /* LOCATION */
+  #location {
+    background: #0a0a0a;
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .location-info { padding-top: 1rem; }
+
+  .location-detail {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+  .location-icon {
+    font-size: 1.2rem;
+    color: var(--gold);
+    min-width: 28px;
+    margin-top: 2px;
+  }
+  .location-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.4rem;
+  }
+  .location-value {
+    font-size: 1rem;
+    color: var(--white);
+    line-height: 1.5;
+  }
+  .location-value a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .location-value a:hover { color: var(--gold-light); }
+
+  .location-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .map-wrap {
+    position: relative;
+    height: 420px;
+    border: 1px solid rgba(212,175,55,0.2);
+    overflow: hidden;
+  }
+  .map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(100%) invert(90%) contrast(80%);
+    opacity: 0.9;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: #111;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+
+  .contact-left .section-title { max-width: 440px; }
+
+  .contact-channels {
+    margin-top: 2.5rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .contact-channel {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid rgba(212,175,55,0.12);
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s;
+    background: transparent;
+  }
+  .contact-channel:hover {
+    border-color: var(--gold);
+    background: rgba(212,175,55,0.05);
+  }
+  .channel-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--black);
+    min-width: 40px;
+  }
+  .channel-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 2px;
+  }
+  .channel-value {
+    font-size: 0.95rem;
+    color: var(--white);
+  }
+
+  .contact-form { }
+  .form-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .form-subtitle {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(255,255,255,0.25);
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: rgba(212,175,55,0.5);
+  }
+  .form-group select option { background: #111; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { margin-top: 1.5rem; }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: waPulse 2.5s infinite;
+  }
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 30px rgba(37,211,102,0.6);
+    animation: none;
+  }
+  .wa-float svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+  }
+  .wa-tooltip {
+    position: absolute;
+    right: 68px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #111;
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    border: 1px solid rgba(212,175,55,0.2);
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(212,175,55,0.1);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand .nav-logo {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 260px;
+    margin-bottom: 1.5rem;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(212,175,55,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--gray);
+    font-size: 0.85rem;
+    transition: all 0.3s;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-col h4 {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.7rem; }
+  .footer-col ul li a {
+    font-size: 0.85rem;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-col ul li a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+  .footer-copy span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.6; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+  @keyframes waPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.12); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.45s; }
+
+  /* Mobile */
+  @media (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    nav.scrolled { padding: 0.8rem 2rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .exp-grid, .contact-grid, .location-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .reviews-carousel { grid-template-columns: 1fr; }
+    .gallery-masonry {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .g1,.g2,.g3,.g4,.g5,.g6,.g7,.g8 {
+      grid-column: auto; grid-row: auto;
+    }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .exp-img-stack { height: 340px; }
+    .exp-img-main { width: 80%; height: 280px; }
+    .exp-img-secondary { width: 65%; height: 220px; }
+    .menu-tabs { flex-wrap: wrap; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.2rem; }
+    section { padding: 4rem 0; }
+    .container, .container-wide { padding: 0 1.2rem; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .gallery-masonry { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  /* Menu panel visibility */
+  .menu-panel { display: none; }
+  .menu-panel.active { display: grid; }
+
+  /* Stats bar */
+  .stats-bar {
+    background: var(--gold);
+    padding: 1.2rem 0;
+  }
+  .stats-bar-inner {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.6);
+    margin-top: 4px;
+  }
+
+  /* Nav mobile menu open */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(11,11,11,0.98);
+    z-index: 2000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--gold);
+    cursor: pointer;
+  }
+
+  /* Form success */
+  .form-success {
+    display: none;
+    padding: 1.5rem;
+    border: 1px solid rgba(212,175,55,0.4);
+    background: rgba(212,175,55,0.08);
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .form-success.show { display: block; }
+  .form-success p {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">
+    <img src="companylog.png" alt="Cafe De Forte Logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Find Us</a></li>
+    <li><a href="#contact" class="nav-cta">Reserve</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <button class="mobile-close" onclick="document.querySelector('.mobile-menu').classList.remove('open')">✕</button>
+  <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open')">About</a>
+  <a href="#menu" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Menu</a>
+  <a href="#gallery" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Gallery</a>
+  <a href="#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Reviews</a>
+  <a href="#location" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Find Us</a>
+  <a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('open')">Reserve a Table</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fort Portal · Uganda · Est. 2018</p>
+    <h1 class="hero-title">Where Flavor<br>Meets <em>Elegance</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">Fort Portal's premier café, bakery & fine dining lounge</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">Explore Menu</a>
+      <a href="#contact" class="btn-outline">Reserve a Table</a>
+      <a href="#location" class="btn-outline">Find Us</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Guests Monthly</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">60+</div>
+      <div class="stat-label">Menu Items</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.8★</div>
+      <div class="stat-label">Guest Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-border"></div>
+        <img class="about-img" src="pizza2.webp" alt="Cafe De Forte dining experience" loading="lazy">
+        <div class="about-badge">
+          <span class="year">7+</span>
+          <span class="since">Years of Craft</span>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-2">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">A Sanctuary of <em>Taste</em> in the Heart of Fort Portal</h2>
+        <div class="gold-rule"></div>
+        <p>Nestled in the lush highlands of Fort Portal, Cafe De Forte was born from a single conviction: that <strong>extraordinary food and remarkable ambiance</strong> should not be a privilege reserved for distant cities.</p>
+        <p>We are part café, part bakery, part fine-dining lounge — and entirely yours. From the first pour of our artisan morning brew to the last bite of an evening meal, every detail is crafted to make you feel that <strong>this place was made for you</strong>.</p>
+        <p>Our kitchen draws from bold Indian-inspired curries, hearty African comfort meals, and wood-fired pizzas — united by one philosophy: <strong>quality without compromise</strong>.</p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-name">Artisan Coffee</div>
+            <div class="pillar-desc">Sourced from Uganda's finest highland estates</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-name">Fine Dining</div>
+            <div class="pillar-desc">Multi-cuisine menus curated with care</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-name">Fresh Bakery</div>
+            <div class="pillar-desc">Baked in-house every morning, from scratch</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-name">Lounge & Events</div>
+            <div class="pillar-desc">A space to gather, celebrate and unwind</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container-wide">
+    <div class="menu-header reveal">
+      <p class="section-label">Our Offerings</p>
+      <h2 class="section-title">Crafted with <em>Passion</em></h2>
+      <div class="gold-rule"></div>
+      <p style="color:var(--gray);max-width:520px;margin:0 auto;font-size:0.95rem;">Every dish at Cafe De Forte is a conversation between tradition and innovation. Explore our seasonal selection.</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist">
+      <button class="menu-tab active" onclick="showMenu('breakfast', this)">Breakfast</button>
+      <button class="menu-tab" onclick="showMenu('drinks', this)">Coffee & Drinks</button>
+      <button class="menu-tab" onclick="showMenu('mains', this)">Main Meals</button>
+      <button class="menu-tab" onclick="showMenu('desserts', this)">Desserts & Bakery</button>
+      <button class="menu-tab" onclick="showMenu('specials', this)">Chef's Specials</button>
+    </div>
+
+    <div id="menu-breakfast" class="menu-panel active menu-grid">
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍳</span>Full English Breakfast <span class="menu-badge">Bestseller</span></div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 28,000</div></div><div class="menu-item-desc">Eggs, turkey sausage, grilled tomato, mushrooms, toast & fresh juice</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥞</span>Fluffy Pancake Stack</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 22,000</div></div><div class="menu-item-desc">Three golden pancakes with maple syrup, fresh fruit compote & whipped cream</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥑</span>Avocado Toast</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 20,000</div></div><div class="menu-item-desc">Artisan sourdough, smashed avocado, poached egg, chili flakes & lemon</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🫕</span>African Porridge Bowl</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 12,000</div></div><div class="menu-item-desc">Slow-cooked millet porridge with roasted groundnuts & banana</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥐</span>Continental Spread</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 25,000</div></div><div class="menu-item-desc">Assorted pastries, artisan bread, jams, butter, and a pot of premium tea</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥪</span>Smoked Salmon Bagel</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 32,000</div></div><div class="menu-item-desc">Toasted bagel with cream cheese, smoked salmon, capers, and red onion</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥣</span>Granola Parfait</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 18,000</div></div><div class="menu-item-desc">House-toasted granola, Greek yogurt, wild honey, and seasonal berries</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥚</span>Eggs Benedict</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 26,000</div></div><div class="menu-item-desc">Poached eggs on English muffins, turkey ham, and rich Hollandaise sauce</div></div>
+    </div>
+
+    <!-- Drinks -->
+    <div id="menu-drinks" class="menu-panel menu-grid">
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">☕</span>Signature Espresso <span class="menu-badge">Signature</span></div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 8,000</div></div><div class="menu-item-desc">Single origin Ugandan highland arabica, pulled to perfection</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🧋</span>Spiced Chai Latte</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 12,000</div></div><div class="menu-item-desc">Cardamom, ginger, cinnamon & steamed milk — our secret blend</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍹</span>Tropical Fruit Blend</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 15,000</div></div><div class="menu-item-desc">Passion fruit, mango, pineapple & a hint of ginger — fresh pressed</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🫖</span>Premium Loose Leaf Tea</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 10,000</div></div><div class="menu-item-desc">Earl Grey, Chamomile, or Rwenzori Green — brewed in a French press</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥛</span>Iced Caramel Macchiato</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 16,000</div></div><div class="menu-item-desc">Chilled espresso over milk, layered with vanilla and drizzle of caramel</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍷</span>Mulled Wine</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 22,000</div></div><div class="menu-item-desc">Warm red wine gently simmered with cinnamon, star anise, and citrus peels</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🧉</span>Matcha Green Tea Latte</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 18,000</div></div><div class="menu-item-desc">Ceremonial grade matcha whisked with steamed oat or dairy milk</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍋</span>Classic Lemonade</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 10,000</div></div><div class="menu-item-desc">Freshly squeezed lemons, pure cane sugar, and a sprig of mint</div></div>
+    </div>
+
+    <!-- Mains -->
+    <div id="menu-mains" class="menu-panel menu-grid">
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍛</span>Butter Chicken Thali <span class="menu-badge">Chef's Pick</span></div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 38,000</div></div><div class="menu-item-desc">Creamy tomato curry, basmati rice, naan, pickled veg & raita</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍕</span>Wood-Fired Garden Pizza</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 35,000</div></div><div class="menu-item-desc">Mozzarella, seasonal vegetables, fresh basil on house-made tomato sauce</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍗</span>Grilled Chicken Platter</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 42,000</div></div><div class="menu-item-desc">Chargrilled herb chicken, spiced fries, garden salad & signature BBQ sauce</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥘</span>Ugandan Stew & Matoke</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 28,000</div></div><div class="menu-item-desc">Slow-braised beef in aromatic groundnut sauce with steamed matoke</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍝</span>Creamy Mushroom Pasta</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 32,000</div></div><div class="menu-item-desc">Fettuccine tossed in a rich truffle mushroom cream, finished with parmesan</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍔</span>The Forte Burger</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 36,000</div></div><div class="menu-item-desc">Hand-pressed beef patty, aged cheddar, caramelised onions, on a brioche bun</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥗</span>Mediterranean Quinoa Bowl</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 26,000</div></div><div class="menu-item-desc">Crisp greens, quinoa, feta, olives, cherry tomatoes & lemon vinaigrette</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🐟</span>Pan-Seared Tilapia</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 38,000</div></div><div class="menu-item-desc">Locally sourced fresh tilapia fillet with garlic butter sauce and garlic mash</div></div>
+    </div>
+
+    <!-- Desserts & Bakery -->
+    <div id="menu-desserts" class="menu-panel menu-grid">
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥐</span>Butter Croissant <span class="menu-badge">Fresh Daily</span></div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 8,000</div></div><div class="menu-item-desc">Laminated French pastry, flaky and golden — baked at dawn</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍞</span>Artisan Sourdough</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 15,000</div></div><div class="menu-item-desc">Long-fermented loaf with a crisp crust and open crumb</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍮</span>Crème Brûlée</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 18,000</div></div><div class="menu-item-desc">Vanilla custard with a perfectly caramelised sugar crust</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍰</span>Classic Tiramisu</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 22,000</div></div><div class="menu-item-desc">Espresso-soaked ladyfingers, rich mascarpone cream, and dark cocoa</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍫</span>Molten Chocolate Lava Cake</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 26,000</div></div><div class="menu-item-desc">Warm chocolate center, vanilla bean ice cream & berry coulis</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍋</span>Lemon Meringue Tart</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 16,000</div></div><div class="menu-item-desc">Zesty lemon curd in a butter pastry shell, topped with toasted meringue</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍦</span>Artisanal Gelato Selection</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 12,000</div></div><div class="menu-item-desc">Choice of vanilla bean, dark chocolate, or pistachio (two scoops)</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🧁</span>Red Velvet Cupcake</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 9,000</div></div><div class="menu-item-desc">Moist cocoa sponge topped with our signature cream cheese frosting</div></div>
+    </div>
+
+    <!-- Specials -->
+    <div id="menu-specials" class="menu-panel menu-grid">
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🥩</span>Tomahawk Steak (For 2) <span class="menu-badge">Pre-order</span></div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 180,000</div></div><div class="menu-item-desc">Grilled 30-day aged bone-in ribeye, fondants, asparagus, and peppercorn jus</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🦞</span>Grilled Rock Lobster</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 140,000</div></div><div class="menu-item-desc">Freshly sourced lobster basted with garlic butter, served with saffron rice</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🦆</span>Duck Confit</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 95,000</div></div><div class="menu-item-desc">Slow-cooked duck leg, crispy skin, sweet potato purée, and cherry reduction</div></div>
+      <div class="menu-item"><div class="menu-item-header"><div class="menu-item-name"><span class="menu-item-icon">🍣</span>Chef's Sushi Boat</div><div class="menu-item-dots"></div><div class="menu-item-price">UGX 110,000</div></div><div class="menu-item-desc">An assortment of premium sashimi, nigiri, and creative maki rolls (24 pieces)</div></div>
+    </div>
+
+    <div class="menu-download reveal">
+      <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Prices subject to change. Full menu available in-house.</p>
+      <a href="tel:+256000000000" class="btn-outline">📞 Call to Enquire About Today's Specials</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <p class="section-label">The Visual Story</p>
+      <h2 class="section-title">Taste It <em>Before You Arrive</em></h2>
+      <div class="gold-rule"></div>
+    </div>
+  </div>
+  <div class="gallery-masonry reveal">
+    <div class="gallery-item g1">
+      <img src="compound.webp" alt="Cafe De Forte Exterior" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-caption">The Ambiance</span></div>
+    </div>
+    <div class="gallery-item g2">
+      <img src="cafedeforte4.jpg" alt="Indian Thali" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-caption">Indian Thali Spread</span></div>
+    </div>
+    <div class="gallery-item g3">
+      <img src="pizza2.webp" alt="Wood-fired Pizza" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-caption">Wood-Fired Perfection</span></div>
+    </div>
+    <div class="gallery-item g4">
+      <img src="cafedeforte2.jpg" alt="Grilled Chicken" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-caption">Grilled Chicken Platter</span></div>
+    </div>
+    <div class="gallery-item g5">
+      <img src="food1.jpg" alt="Chef's Special" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-caption">Chef's Selection</span></div>
+    </div>
+    <div class="gallery-item g6">
+      <img src="pizza.jpg" alt="Fresh Pizza" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-caption">Artisan Craftsmanship</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="exp-grid">
+      <div class="exp-text reveal">
+        <p class="section-label">The Ambiance</p>
+        <h2 class="section-title">More Than a Meal — It's an <em>Experience</em></h2>
+        <div class="gold-rule"></div>
+        <p style="color:var(--gray-light);font-size:0.95rem;line-height:1.9;margin-bottom:2rem;">Step into a space where the warmth of Fort Portal's highland air meets the cool sophistication of a modern lounge. Whether you're here for a morning coffee, a working lunch, or an evening with friends — the atmosphere adapts to you.</p>
+        <div class="exp-features">
+          <div class="exp-feature">
+            <div class="exp-feature-icon">🌿</div>
+            <div>
+              <div class="exp-feature-title">Garden Terrace Seating</div>
+              <div class="exp-feature-desc">Dine under open skies surrounded by lush greenery — a truly Ugandan outdoor experience.</div>
+            </div>
+          </div>
+          <div class="exp-feature">
+            <div class="exp-feature-icon">🎶</div>
+            <div>
+              <div class="exp-feature-title">Live Music & Events</div>
+              <div class="exp-feature-desc">Weekend live performances, private events, and celebrations hosted in our lounge space.</div>
+            </div>
+          </div>
+          <div class="exp-feature">
+            <div class="exp-feature-icon">☕</div>
+            <div>
+              <div class="exp-feature-title">Artisan Coffee Bar</div>
+              <div class="exp-feature-desc">Our trained baristas use single-origin Ugandan beans with professional espresso equipment.</div>
+            </div>
+          </div>
+          <div class="exp-feature">
+            <div class="exp-feature-icon">🍰</div>
+            <div>
+              <div class="exp-feature-title">In-House Bakery</div>
+              <div class="exp-feature-desc">Every pastry, loaf, and cake baked fresh on-site by our dedicated bakery team each morning.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="exp-img-stack reveal reveal-delay-2">
+        <img class="exp-img-main" src="cafedeforte1.jpg" alt="Cafe De Forte food experience" loading="lazy">
+        <img class="exp-img-secondary" src="cafedeforte5.webp" alt="Cafe De Forte artisan food" loading="lazy">
+        <div class="exp-img-accent">
+          <div class="exp-img-accent-inner">
+            <div class="num">100%</div>
+            <div class="lbl">Freshly<br>Made</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <p class="section-label">What Guests Say</p>
+      <h2 class="section-title">Stories of <em>Unforgettable</em> Moments</h2>
+      <div class="gold-rule"></div>
+      
+      <a href="#" target="_blank" style="text-decoration: none;">
+        <div class="google-badge">
+          <div class="google-badge-g">
+            <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+          </div>
+          <div class="google-badge-rating">4.1</div>
+          <div class="google-badge-stars">
+            ★★★★<span style="position:relative;display:inline-block;color:#e0e0e0"><span style="position:absolute;left:0;top:0;width:10%;overflow:hidden;color:#fbbc04">★</span>★</span>
+          </div>
+          <div class="google-badge-text">Google Reviews</div>
+        </div>
+      </a>
+    </div>
+    <div class="reviews-carousel">
+      <div class="review-card reveal">
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="review-text">The butter chicken here rivals anything I've had in Kampala or Nairobi. Absolutely exceptional food, and the ambiance is warm and refined. This is Fort Portal's hidden gem.</p>
+        <div class="review-author">
+          <div class="review-avatar">JM</div>
+          <div>
+            <div class="review-name">James Mukholi</div>
+            <div class="review-location">Kampala, Uganda</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="review-text">We stopped in as tourists heading to Kibale Forest and ended up staying for hours. The pizza, the chai latte, the service — all immaculate. A must-visit in Fort Portal.</p>
+        <div class="review-author">
+          <div class="review-avatar">SL</div>
+          <div>
+            <div class="review-name">Sarah & Liam</div>
+            <div class="review-location">London, United Kingdom</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-3">
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="review-text">Perfect atmosphere for business lunches. The grilled chicken platter is outstanding, and the coffee is the best I've had in western Uganda. I'm a regular now.</p>
+        <div class="review-author">
+          <div class="review-avatar">AK</div>
+          <div>
+            <div class="review-name">Amara Kiiza</div>
+            <div class="review-location">Fort Portal, Uganda</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;" class="reveal">
+      <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Join hundreds of satisfied guests</p>
+      <a href="https://wa.me/256000000000" target="_blank" class="btn-primary" style="display:inline-block;">Reserve Your Table Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="container">
+    <div class="location-grid">
+      <div class="location-info reveal">
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title">In the Heart of <em>Fort Portal</em></h2>
+        <div class="gold-rule"></div>
+        <div class="location-detail">
+          <div class="location-icon">📍</div>
+          <div>
+            <div class="location-label">Address</div>
+            <div class="location-value">Bwamba Road, Fort Portal City<br>Western Uganda</div>
+          </div>
+        </div>
+        <div class="location-detail">
+          <div class="location-icon">📞</div>
+          <div>
+            <div class="location-label">Phone</div>
+            <div class="location-value"><a href="tel:+256000000000">+256 XXX XXX XXX</a></div>
+          </div>
+        </div>
+        <div class="location-detail">
+          <div class="location-icon">🕐</div>
+          <div>
+            <div class="location-label">Opening Hours</div>
+            <div class="location-value">
+              Mon – Fri: 7:00 AM – 10:00 PM<br>
+              Sat – Sun: 7:30 AM – 11:00 PM
+            </div>
+          </div>
+        </div>
+        <div class="location-btns">
+          <a href="https://maps.google.com/?q=Fort+Portal+Uganda" target="_blank" class="btn-primary" style="text-align:center;">Get Directions</a>
+          <a href="tel:+256000000000" class="btn-outline" style="text-align:center;">Call Now</a>
+          <a href="https://wa.me/256000000000" target="_blank" class="btn-outline" style="text-align:center;">WhatsApp Us</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31870.59899168484!2d30.25395!3d0.67105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1763e7af5f68b7f9%3A0x9cd6fb4de9e8d9ba!2sFort%20Portal%2C%20Uganda!5e0!3m2!1sen!2sus!4v1700000000000"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">We'd Love to <em>Welcome</em> You</h2>
+        <div class="gold-rule"></div>
+        <p style="color:var(--gray-light);font-size:0.9rem;line-height:1.8;margin-bottom:2rem;">Whether it's a table for two, a private event, or a special birthday cake — our team is here to make it perfect.</p>
+        <div class="contact-channels">
+          <a href="https://wa.me/256000000000" target="_blank" class="contact-channel">
+            <div class="channel-icon">💬</div>
+            <div>
+              <div class="channel-label">WhatsApp (Fastest)</div>
+              <div class="channel-value">+256 XXX XXX XXX</div>
+            </div>
+          </a>
+          <a href="tel:+256000000000" class="contact-channel">
+            <div class="channel-icon">📞</div>
+            <div>
+              <div class="channel-label">Call Us</div>
+              <div class="channel-value">+256 XXX XXX XXX</div>
+            </div>
+          </a>
+          <a href="mailto:hello@cafedeforte.com" class="contact-channel">
+            <div class="channel-icon">✉️</div>
+            <div>
+              <div class="channel-label">Email</div>
+              <div class="channel-value">hello@cafedeforte.com</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <div class="form-title">Table Reservation</div>
+        <div class="form-subtitle">Fill in the form and we'll confirm within 2 hours</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="f-name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" id="f-phone" placeholder="+256 ...">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" id="f-date">
+          </div>
+          <div class="form-group">
+            <label>Guests</label>
+            <select id="f-guests">
+              <option value="">Select...</option>
+              <option>1 – 2</option>
+              <option>3 – 4</option>
+              <option>5 – 8</option>
+              <option>9 – 15</option>
+              <option>16+ (Private Event)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Special Requests</label>
+          <textarea id="f-notes" placeholder="Occasion, dietary requirements, seating preference..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="btn-primary" onclick="submitForm()" style="width:100%;font-size:0.78rem;cursor:pointer;border:none;">Confirm Reservation</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <p>✦ Thank you! We'll confirm your reservation via WhatsApp shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" style="display:block;margin-bottom:1rem;">Cafe De <span>Forte</span></a>
+        <p class="footer-tagline">Fort Portal's premier café, bakery, restaurant & lounge experience. Where every visit becomes a memory.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" title="Facebook">f</a>
+          <a href="#" class="social-btn" title="Instagram">ig</a>
+          <a href="#" class="social-btn" title="TripAdvisor">ta</a>
+          <a href="https://wa.me/256000000000" class="social-btn" title="WhatsApp">wa</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#experience">Ambiance</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#contact">Table Reservations</a></li>
+          <li><a href="#contact">Private Events</a></li>
+          <li><a href="#menu">Bakery Orders</a></li>
+          <li><a href="#contact">Corporate Catering</a></li>
+          <li><a href="#contact">Birthday Packages</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#location">Bwamba Road, Fort Portal</a></li>
+          <li><a href="tel:+256000000000">+256 XXX XXX XXX</a></li>
+          <li><a href="mailto:hello@cafedeforte.com">hello@cafedeforte.com</a></li>
+          <li><a href="#location">Mon–Fri: 7am–10pm</a></li>
+          <li><a href="#location">Sat–Sun: 7:30am–11pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>Cafe De Forte</span>. Fort Portal, Uganda. All rights reserved.</p>
+      <p class="footer-copy">Designed for <span>excellence</span>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/256000000000" target="_blank" class="wa-float" title="Chat on WhatsApp">
+  <div class="wa-tooltip">Chat with us on WhatsApp</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Menu tabs
+  function showMenu(category, btn) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('menu-' + category).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Form submit
+  function submitForm() {
+    const name = document.getElementById('f-name').value;
+    const phone = document.getElementById('f-phone').value;
+    if (!name || !phone) {
+      alert('Please enter your name and phone number to reserve.');
+      return;
+    }
+    document.getElementById('form-success').classList.add('show');
+    document.querySelector('.form-submit button').disabled = true;
+    document.querySelector('.form-submit button').textContent = 'Reservation Sent ✓';
+    document.querySelector('.form-submit button').style.background = '#2a5e2a';
+    document.querySelector('.form-submit button').style.color = '#fff';
+  }
+</script>
+</body>
+</html>
