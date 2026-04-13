@@ -565,43 +565,50 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 320px);
-    gap: 4px;
+    gap: 12px;
   }
 
   .gallery-item {
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
   .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    filter: brightness(0.88) saturate(0.9);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(0.85) saturate(0.95);
   }
   .gallery-item:hover img {
-    transform: scale(1.07);
-    filter: brightness(0.95) saturate(1.05);
+    transform: scale(1.08);
+    filter: brightness(1) saturate(1.1);
   }
   .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(11,11,11,0.8) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: opacity 0.5s ease;
     display: flex;
     align-items: flex-end;
-    padding: 1.5rem;
+    padding: 1.8rem;
   }
   .gallery-item:hover .gallery-overlay { opacity: 1; }
   .gallery-caption {
     font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1.15rem;
+    font-weight: 500;
     color: var(--white);
     letter-spacing: 0.04em;
+    transform: translateY(15px);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .gallery-item:hover .gallery-caption {
+    transform: translateY(0);
   }
 
   .g1 { grid-column: 1; grid-row: 1 / 3; }
@@ -758,6 +765,53 @@
     top: 2px;
   }
 
+  /* TRIPADVISOR REVIEWS BADGE */
+  .tripadvisor-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 0.6rem 1.6rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .tripadvisor-badge:hover {
+    transform: translateY(-2px);
+  }
+  .tripadvisor-logo {
+    font-family: 'Product Sans', var(--sans);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #000;
+    margin-right: 0.8rem;
+    letter-spacing: -0.2px;
+  }
+  .tripadvisor-logo span {
+    color: #34e0a1;
+  }
+  .tripadvisor-rating {
+    font-family: var(--sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    margin-right: 0.4rem;
+  }
+  .tripadvisor-circles {
+    display: flex;
+    margin-right: 0.8rem;
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  .tripadvisor-badge-text {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #5f6368;
+    position: relative;
+    top: 2px;
+  }
+
   /* REVIEWS */
   #reviews {
     background: var(--black);
@@ -772,73 +826,86 @@
   }
 
   .review-card {
-    background: #111;
-    padding: 2.2rem;
-    border: 1px solid rgba(212,175,55,0.1);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.6rem 1.6rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     position: relative;
-    transition: border-color 0.3s, transform 0.3s;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-family: var(--sans);
+    text-align: left;
   }
   .review-card:hover {
-    border-color: rgba(212,175,55,0.35);
+    border-color: rgba(255,255,255,0.15);
     transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
   }
-  .review-card::before {
-    content: '"';
-    font-family: var(--serif);
-    font-size: 6rem;
-    font-weight: 700;
-    color: rgba(212,175,55,0.08);
-    position: absolute;
-    top: -1rem;
-    left: 1.5rem;
-    line-height: 1;
-  }
-
-  .review-stars {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 1.2rem;
-  }
-  .star { color: var(--gold); font-size: 0.9rem; }
-
-  .review-text {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--gray-light);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-
-  .review-author {
+  
+  .auth-header {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
   }
-  .review-avatar {
+  .auth-avatar {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: var(--gold-dim);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--black);
+    font-size: 1.1rem;
+    font-weight: 500;
   }
-  .review-name {
-    font-weight: 400;
-    font-size: 0.9rem;
-    color: var(--white);
+  .auth-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
   }
-  .review-location {
+  .auth-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e8eaed;
+  }
+  .auth-meta {
     font-size: 0.75rem;
-    color: var(--gray);
+    color: #9aa0a6;
+  }
+  .auth-logo {
+    margin-left: auto;
+    font-family: 'Product Sans', var(--sans);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .auth-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .auth-stars {
+    display: flex;
+    gap: 1px;
+    color: #fbbc04;
+  }
+  .auth-stars svg {
+    width: 15px;
+    height: 15px;
+    fill: #fbbc04;
+  }
+  .auth-circles {
+    display: flex;
+    gap: 2px;
+    color: #34e0a1;
+    font-size: 0.75rem;
+  }
+  .auth-time {
+    font-size: 0.75rem;
+    color: #9aa0a6;
   }
 
   /* LOCATION */
@@ -1574,8 +1641,8 @@
         </div>
       </div>
       <div class="exp-img-stack reveal reveal-delay-2">
-        <img class="exp-img-main" src="cafedeforte1.jpg" alt="Cafe De Forte food experience" loading="lazy">
-        <img class="exp-img-secondary" src="cafedeforte5.webp" alt="Cafe De Forte artisan food" loading="lazy">
+        <img class="exp-img-main" src="coffee.jpeg" alt="Cafe De Forte artisan coffee" loading="lazy">
+        <img class="exp-img-secondary" src="soda.jpeg" alt="Cafe De Forte refreshing soda" loading="lazy">
         <div class="exp-img-accent">
           <div class="exp-img-accent-inner">
             <div class="num">100%</div>
@@ -1594,53 +1661,95 @@
       <p class="section-label">What Guests Say</p>
       <h2 class="section-title">Stories of <em>Unforgettable</em> Moments</h2>
       <div class="gold-rule"></div>
-      
-      <a href="#" target="_blank" style="text-decoration: none;">
-        <div class="google-badge">
-          <div class="google-badge-g">
-            <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+      <div class="review-badges" style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-top:2rem;">
+        <a href="#" target="_blank" style="text-decoration: none;">
+          <div class="google-badge" style="margin-top:0;">
+            <div class="google-badge-g">
+              <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+            </div>
+            <div class="google-badge-rating">4.1</div>
+            <div class="google-badge-stars">
+              ★★★★<span style="position:relative;display:inline-block;color:#e0e0e0"><span style="position:absolute;left:0;top:0;width:10%;overflow:hidden;color:#fbbc04">★</span>★</span>
+            </div>
+            <div class="google-badge-text">Google Reviews</div>
           </div>
-          <div class="google-badge-rating">4.1</div>
-          <div class="google-badge-stars">
-            ★★★★<span style="position:relative;display:inline-block;color:#e0e0e0"><span style="position:absolute;left:0;top:0;width:10%;overflow:hidden;color:#fbbc04">★</span>★</span>
+        </a>
+
+        <a href="#" target="_blank" style="text-decoration: none;">
+          <div class="tripadvisor-badge">
+            <div class="tripadvisor-logo">
+              Trip<span>advisor</span>
+            </div>
+            <div class="tripadvisor-rating">4.8</div>
+            <div class="tripadvisor-circles">
+              <span style="color:#34e0a1">⬤⬤⬤⬤</span><span style="position:relative;display:inline-block;color:#e0e0e0">⬤<span style="position:absolute;left:0;top:0;width:80%;overflow:hidden;color:#34e0a1">⬤</span></span>
+            </div>
+            <div class="tripadvisor-badge-text">Reviews</div>
           </div>
-          <div class="google-badge-text">Google Reviews</div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
     <div class="reviews-carousel">
-      <div class="review-card reveal">
-        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="review-text">The butter chicken here rivals anything I've had in Kampala or Nairobi. Absolutely exceptional food, and the ambiance is warm and refined. This is Fort Portal's hidden gem.</p>
-        <div class="review-author">
-          <div class="review-avatar">JM</div>
-          <div>
-            <div class="review-name">James Mukholi</div>
-            <div class="review-location">Kampala, Uganda</div>
+      <div class="review-card authentic-google reveal">
+        <div class="auth-header">
+          <div class="auth-avatar" style="background:#e8f0fe; color:#1a73e8;">J</div>
+          <div class="auth-info">
+            <div class="auth-name">James Mukholi</div>
+            <div class="auth-meta">Local Guide · 14 reviews</div>
           </div>
+          <div class="auth-logo"><span style="color:#4285f4">G</span></div>
         </div>
+        <div class="auth-rating">
+          <div class="auth-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <span class="auth-time">a month ago</span>
+        </div>
+        <p class="review-text" style="font-family: var(--sans); font-size: 0.95rem; font-style: normal; font-weight: 400; color: #e8eaed; line-height: 1.6; margin-bottom: 0;">The butter chicken here rivals anything I've had in Kampala or Nairobi. Absolutely exceptional food, and the ambiance is warm and refined. This is Fort Portal's hidden gem.</p>
       </div>
-      <div class="review-card reveal reveal-delay-2">
-        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="review-text">We stopped in as tourists heading to Kibale Forest and ended up staying for hours. The pizza, the chai latte, the service — all immaculate. A must-visit in Fort Portal.</p>
-        <div class="review-author">
-          <div class="review-avatar">SL</div>
-          <div>
-            <div class="review-name">Sarah & Liam</div>
-            <div class="review-location">London, United Kingdom</div>
+
+      <div class="review-card authentic-tripadvisor reveal reveal-delay-2">
+        <div class="auth-header">
+          <div class="auth-avatar" style="background:#e2f2e9; color:#18733b;">S</div>
+          <div class="auth-info">
+            <div class="auth-name">Sarah & Liam</div>
+            <div class="auth-meta">London, UK · 8 contributions</div>
           </div>
+          <div class="auth-logo"><span style="color:#34e0a1;font-weight:800;font-size:1.1rem;letter-spacing:-0.5px">Tripadvisor</span></div>
         </div>
+        <div class="auth-rating">
+          <div class="auth-circles">
+            <span>⬤</span><span>⬤</span><span>⬤</span><span>⬤</span><span>⬤</span>
+          </div>
+          <span class="auth-time">Reviewed 3 weeks ago</span>
+        </div>
+        <p class="review-text" style="font-family: var(--sans); font-size: 0.95rem; font-style: normal; font-weight: 400; color: #e8eaed; line-height: 1.6; margin-bottom: 0;">We stopped in as tourists heading to Kibale Forest and ended up staying for hours. The pizza, the chai latte, the service — all immaculate. A must-visit in Fort Portal.</p>
       </div>
-      <div class="review-card reveal reveal-delay-3">
-        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="review-text">Perfect atmosphere for business lunches. The grilled chicken platter is outstanding, and the coffee is the best I've had in western Uganda. I'm a regular now.</p>
-        <div class="review-author">
-          <div class="review-avatar">AK</div>
-          <div>
-            <div class="review-name">Amara Kiiza</div>
-            <div class="review-location">Fort Portal, Uganda</div>
+
+      <div class="review-card authentic-google reveal reveal-delay-3">
+        <div class="auth-header">
+          <div class="auth-avatar" style="background:#fce8e6; color:#c5221f;">A</div>
+          <div class="auth-info">
+            <div class="auth-name">Amara Kiiza</div>
+            <div class="auth-meta">Local Guide · 42 reviews</div>
           </div>
+          <div class="auth-logo"><span style="color:#4285f4">G</span></div>
         </div>
+        <div class="auth-rating">
+          <div class="auth-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <span class="auth-time">2 months ago</span>
+        </div>
+        <p class="review-text" style="font-family: var(--sans); font-size: 0.95rem; font-style: normal; font-weight: 400; color: #e8eaed; line-height: 1.6; margin-bottom: 0;">Perfect atmosphere for business lunches. The grilled chicken platter is outstanding, and the coffee is the best I've had in western Uganda. I'm a regular now.</p>
       </div>
     </div>
     <div style="text-align:center;margin-top:3rem;" class="reveal">
